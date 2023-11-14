@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block contenu %}
+<div class="row">
+   <div class="col-md-6 m-auto">
+       <div class="card card-body">
+           <form action="" method="post">
+               {% csrf_token %}
+               <div class="alert alert-danger" role="alert">
+                Etes-vous sure de vouloir Supprimer {{article}}!
+              </div>
+               <button class="btn btn-danger" type="submit">OUI</button>
+               <a href="{% url 'list_articles'%}" class="btn btn-info">NON</a>
+           </form>
+       </div>
+   </div>
+</div>
+{% endblock contenu %}

@@ -5,9 +5,9 @@
 {% block contenu %}
 <div class="row  "> 
   
-    <div class="col-md-auto m-auto mt-2">
+    <div class="col mt-2">
         
-            {% comment %} <a href="" class="btn btn-outline-info mb-2">Ajouter</a> {% endcomment %}
+            <a href="{% url 'new_articles'%}" class="btn btn-outline-info mb-2">Ajouter</a>
             <h1 class="h1 text-secondary"> les articles </h1>
     </div>
   {% if page_obj  %}
@@ -21,9 +21,7 @@
                             <li class=" h5 card-title">{{article.title}}</li>
                             <p class="card-text text-info">{{article.summary}}</p>
                             <p class="card-text">Publier  le {{article.creation_date}} par {{article.author}}</p>
-                            {% comment %} <p class="card-text"></p> {% endcomment %}
-                            <p class="card-text">Modifier le  {{article.last_update}}</p>
-                        </div>
+                           </div>
                     </div> 
                 </a>
                 

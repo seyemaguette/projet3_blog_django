@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% block contenu %}
+<div class="row">
+    <div class=" col col-md-auto mt-2">
+        <form method="POST">
+            {% csrf_token %}
+           <div class="form-group">
+            {{form.media}}
+            {{form.as_p}}
+           </div> 
+           <button type="submit" class="btn btn-primary">Modifier</button>
+        </form> 
+    </div>
+</div>
+{% endblock contenu %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends "base.html" %}
+{% block contenu %}
+<div class="row">
+    <div class=" col col-md-auto mt-2">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Titre </label>
+                <input type="text" class="form-control" name="title" value="{{article.title}}" >
+              </div>
+            <div class="form-group">
+                <label for="summary">Resumé </label>
+                <input type="text" class="form-control" name="summary" value="{{article.summary}}" >
+              </div>
+            <div class="form-group">
+                <label for="content">Contenu de votre blog </label>
+                <input type="" class="form-control" name="content"value="{{article.content}}"  >
+              </div>
+           
+           <button type="submit" class="btn  btn-outline-primary">Modifier</button>
+        </form> 
+    </div>
+</div>
+{% endblock contenu %} {% endcomment %}
+
