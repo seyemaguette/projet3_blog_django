@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+  Acceuil
+{% endblock title %}  
+{% block contenu %}
+<div class="row  "> 
+  
+    <div class="col-md-auto m-auto mt-2">
+        
+            {% comment %} <a href="" class="btn btn-outline-info mb-2">Ajouter</a> {% endcomment %}
+            <h1 class="h1 text-secondary"> les articles </h1>
+    </div>
+  {% if page_obj  %}
+  <div class="row m-auto my-2">
+  {% for  article in page_obj %}
+        
+            <div class="col col-lg-3 mb-2">
+                <a href="{% url 'details' article.id %}" style="text-decoration:none ;" >
+                    <div class="card " >
+                        <!-- style="width: 18rem;" -->
+                        <div class="card-body">
+                            <li class=" h5 card-title">{{article.title}}</li>
+                            <p class="card-text text-info">{{article.summary}}</p>
+                            <p class="card-text">Publier  le {{article.creation_date}} par {{article.author}}</p>
+                            {% comment %} <p class="card-text"></p> {% endcomment %}
+                            <p class="card-text">Modifier le  {{article.last_update}}</p>
+                        </div>
+                    </div> 
+                </a>
+                
+            </div>
+        
+    {% endfor %}
+</div>
+    </div>
+  {% endif %}
+  {% include "partials/pagination.html" %}
+
+</div>
+{% endblock contenu %}
