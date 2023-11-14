@@ -5,16 +5,15 @@
 {% block contenu %}
 <div class="row  "> 
   
-    <div class="col-md-auto m-auto mt-2">
+    <div class=" col-md-6 mx-auto mt-2">
         
-            {% comment %} <a href="" class="btn btn-outline-info mb-2">Ajouter</a> {% endcomment %}
             <h1 class="h1 text-secondary"> les articles </h1>
     </div>
   {% if page_obj  %}
-  <div class="row m-auto my-2">
+  <div class="row">
   {% for  article in page_obj %}
         
-            <div class="col col-lg-3 mb-2">
+            <div class="col col-lg-3 col-md-6 mb-4">
                 <a href="{% url 'details' article.id %}" style="text-decoration:none ;" >
                     <div class="card " >
                         <!-- style="width: 18rem;" -->
@@ -32,9 +31,12 @@
         
     {% endfor %}
 </div>
-    </div>
+  
   {% endif %}
-  {% include "partials/pagination.html" %}
+  <div>
+
+    {% include "partials/pagination.html" %}
+  </div>
 
 </div>
 {% endblock contenu %}

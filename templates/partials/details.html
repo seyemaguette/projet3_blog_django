@@ -1,18 +1,18 @@
-<div class="row  "> 
-    <div class="col m-auto mt-2">
+<div class="row  ">
   {% if article  %}
-       <div class="card ">
-        <div class="card-header"> {{article.title}} </div>
 
-         <div class="cart-text">
-            <div> {{article.content|safe }} </div>
-
-            <p class="list-group-item">Cree le {{article.creation_date}} par {{article.author}}</p>
-            <p class="list-group-item">Modifier le {{article.last_update}}</p>
-          
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    
+                  <p class="lead"><h1> {{article.title}}</h1></p>
+                  <p class="lead"> {{article.content|safe }}</p>
+                  <p class="lead">Cree le {{article.creation_date}} par {{article.author}}</p>
+                  <p class="lead">Modifier le {{article.last_update}}</p>
+                
+                </div>
+              </div>
          </div>
          </div>
-    </div>
     {% else %}
     <p> vide</p>
   {% endif %}
