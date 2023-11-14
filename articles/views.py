@@ -7,7 +7,7 @@ from .models import Article
 # Article=''
 def home(request):
     # articles = Article.objects.all()
-    object_list = Article.objects.order_by('-last_update')
+    object_list = Article.objects.filter(archive=False).order_by('-last_update')
     page_num = request.GET.get('page', 1)
 
     paginator = Paginator(object_list, 10) # 6 employees per page

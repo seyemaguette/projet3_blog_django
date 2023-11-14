@@ -12,7 +12,8 @@ S'inscrire
 
             {% csrf_token %}
             {{form.as_p}}
-            <button class="btn btn-primary" type="submit" > Se connecter</button>
+            <button class="btn btn-primary" type="submit" > Se connecter</button> 
+            <p class=" alert alert-secondary mt-5"> <a class="" href="{% url 'register'%}">S'inscrire</a> si vous etes nouveau ✍</p>
         </form>
     </div>
 </div>

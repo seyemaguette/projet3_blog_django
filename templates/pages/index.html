@@ -5,7 +5,7 @@
 {% block contenu %}
 <div class="row  "> 
   
-    <div class=" col text-center mt-2">
+    <div class=" col m-4">
         
             <h1 class="h1 text-secondary"> les articles </h1>
     </div>
@@ -13,10 +13,10 @@
   <div class="row">
   {% for  article in page_obj %}
         
-            <div class="col col-lg-3 col-md-6 mb-4">
+            <div class="col col-lg-4 col-md-6 my-2">
                 <a href="{% url 'details' article.id %}" style="text-decoration:none ;" >
-                    <div class="card " >
-                        <!-- style="width: 18rem;" -->
+                    <div class="card  "   style="width: 18rem;" >
+                        
                         <div class="card-body">
                             <li class=" h5 card-title">{{article.title}}</li>
                             <p class="card-text text-info">{{article.summary}}</p>
@@ -33,14 +33,16 @@
   {% endif %}
   <div>
     {% if request.user.is_authenticated %}
+          <div class="d-flex justify-content-center">
 
-          <h4 class="text-success">vous etes connectés</h4>
+            <p class="alert alert-info w-25 text-center">{{request.user}} connecté</p>
+          </div>
 
       {%else%}
-    <div class="d-flex  justify-content-around">
+    <div class=" text-center  ">
 
-      <p class="h4 text-secondary"><a class="btn btn-warning" href="{% url 'register'%}">S' inscrire</a>  pour ajouter des articles</p>
-       <p class="h4 text-secondary"><a class="btn btn-info" href="{% url 'login'%}"> Se connecter </a> pour gerer vos articles</p>
+      <p class=" text-secondary"><a class="text-info" href="{% url 'register'%}">S' inscrire</a>  pour ajouter des articles</p>
+       <p class=" text-secondary"><a class="text-info" href="{% url 'login'%}"> Se connecter </a> pour gerer vos articles</p>
     </div>
     {% endif %}
     {% include "partials/pagination.html" %}
