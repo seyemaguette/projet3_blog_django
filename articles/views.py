@@ -23,6 +23,10 @@ def home(request):
     return render(request, 'pages/index.html', {'page_obj': page_obj})
     
 
+def about(request):
+    return render(request, 'pages/about.html')
+
+
 def details(request, id):
     
     article = get_object_or_404(Article, id=id)
