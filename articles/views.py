@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .form import ArticleForm
 from .models import Article
+from django.utils import timezone
 # Create your views here.
 # Article=''
 def home(request):
@@ -78,7 +79,8 @@ def new_articles(request):
                 author = author,
                 title = title,
                 summary = summary,
-                content = content
+                content = content,
+                
             )
             article.save()
             
@@ -104,6 +106,7 @@ def edit_articles(request,id):
              title = title,
             summary = summary,
             content = content,
+            last_update=timezone.now()
             
         )
         
