@@ -16,10 +16,12 @@
             <div class="col col-lg-4 col-md-6 my-2">
                 <a href="{% url 'details' article.id %}" style="text-decoration:none ;" >
                     <div class="card  "   style="width: 18rem;" >
-                        
-                        <div class="card-body">
-                            <li class=" h5 card-title">{{article.title}}</li>
-                            <p class="card-text text-info">{{article.summary}}</p>
+                      {% if  article.image %}
+                      <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap">
+                      {% endif %}
+                        <div class="card-body ">
+                            <li class="card-text ">{{article.title}}</li>
+                            <p class=" h5 card-title text-info">{{article.summary}}</p>
                             <p class="card-text">Publier  le {{article.creation_date}} <br>par {{article.author}}</p>
                         </div>
                     </div> 

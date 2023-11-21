@@ -17,6 +17,9 @@
             <div class="col col-lg-4 col-md-6  my-2">
                 <a href="{% url 'details_articles' article.id %}" style="text-decoration:none ;" >
                     <div class="card " style="width: 18rem;">
+                      {% if  article.image %}
+                      <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap">
+                      {% endif %}
                         <div class="card-body">
                             <li class=" h5 card-title">{{article.title}}</li>
                             <p class="card-text text-info">{{article.summary}}</p>

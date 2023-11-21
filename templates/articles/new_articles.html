@@ -2,7 +2,7 @@
 {% block contenu %}
 <div class="row">
     <div class=" col col-md-auto mt-2">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
            <div class="form-group">
             {{form.media}}

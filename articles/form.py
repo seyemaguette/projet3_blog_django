@@ -5,6 +5,11 @@ from ckeditor.widgets import CKEditorWidget
 from ckeditor.fields import RichTextField
 class ArticleForm(forms.ModelForm):
     
+    image = forms.ImageField(
+        label = 'Image d"acceuil de votre blog',
+        widget=forms.FileInput(
+            attrs={
+                "class": "form-control"}))
     title = forms.CharField(
         label = 'Titre',
         widget=forms.TextInput(
@@ -20,7 +25,7 @@ class ArticleForm(forms.ModelForm):
         widget=CKEditorWidget())
     class Meta:
         model = Article
-        fields = ['title', 'summary', 'content']
+        fields = ['image','title', 'summary', 'content']
        
        
    

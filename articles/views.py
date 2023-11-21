@@ -11,7 +11,7 @@ def home(request):
     object_list = Article.objects.filter(archive=False).order_by('-last_update')
     page_num = request.GET.get('page', 1)
 
-    paginator = Paginator(object_list, 10) # 6 employees per page
+    paginator = Paginator(object_list, 10) # 10 articles / page
 
 
     try:
@@ -43,7 +43,7 @@ def list_articles(request):
     object_list = Article.objects.filter(author=user, archive = False).order_by('-last_update')
     page_num = request.GET.get('page', 1)
 
-    paginator = Paginator(object_list, 10) # 6 employees per page
+    paginator = Paginator(object_list, 10) # 10 articles / page
 
 
     try:
@@ -66,20 +66,24 @@ def details_articles(request, id):
     
     return render(request, 'articles/details_articles.html',{'article':article})
 
+# --------------------------create new article-----------------------------------------
+
 @login_required(login_url='/login/')
 def new_articles(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             author = request.user
-            title =  request.POST['title']
-            summary = request.POST['summary']
-            content =  request.POST['content']
+            title =  form.cleaned_data .get('title')
+            summary = form.cleaned_data .get('summary')
+            content = form.cleaned_data .get('content')
+            image = form.cleaned_data .get('image')
             article = Article.objects.create(
                 author = author,
                 title = title,
                 summary = summary,
                 content = content,
+                image = image,
                 
             )
             article.save()
@@ -89,33 +93,40 @@ def new_articles(request):
     else:
        form = ArticleForm() 
     
-    return render (request, 'articles/new_articles.html', {'form':form} )
+    return render (request, 'articles/new_articles.html', {'form':form,} )
 
+# --------------------------edit article----------------------------------------
 
 @login_required(login_url='/login/')
 def edit_articles(request,id):
     article = get_object_or_404(Article, id=id)
     
     form =ArticleForm(instance=article)
-    if request.method == 'POST':
+    if request.method == 'POST' :
+        form = ArticleForm(request.POST, request.FILES, instance=article, )
         title =  request.POST['title']
         summary = request.POST['summary']
-        content =  request.POST['content']
+        content = request.POST['content']
+        if request.FILES.get("image"):
+            image = request.FILES['image']
+        else:
+            image = article.image
         article_to_update = Article.objects.filter(pk=article.id)
         article_to_update.update(
              title = title,
             summary = summary,
             content = content,
-            last_update=timezone.now()
+            last_update=timezone.now()  
             
         )
+        article.image = image
+        article.save()
         
         return redirect('/articles/list/')
 
     return render (request, 'articles/edit_articles.html',{'article':article,'form':form})
 
-
-
+# --------------------------delete article-----------------------------------------
 @login_required(login_url='/login/')
 def delete_article(request, id):
     article =get_object_or_404(Article, id=id)

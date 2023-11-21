@@ -5,6 +5,9 @@
                 <div class="container">
                     
                   <p class="lead"><h1> {{article.title}}</h1></p>
+                  {% if  article.image%}
+                  <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap">
+                  {% endif %}
                   <p class="lead"> {{article.content|safe }}</p>
                   <p class="lead">Cree le {{article.creation_date}} par {{article.author}}</p>
                   <p class="lead">Modifier le {{article.last_update}}</p>

@@ -2,12 +2,22 @@
 {% extends "base.html" %}
 {% block contenu %}
 <div class="row">
-    <div class=" col col-md-auto mt-2">
-        <form method="POST">
+    <div class=" col col-md-auto mt-2"   data-ajax="false">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
            <div class="form-group">
             {{form.media}}
-            {{form.as_p}}
+            <p> {{form.image.label}}</p>
+            {% if article.image %}
+            <img src="{{ article.image.url }}" />
+            {% endif %}
+            {{form.image}}
+            <p> {{form.title.label}}</p>
+            {{form.title}}
+            <p> {{form.summary.label}}</p>
+            {{form.summary}}
+            <p> {{form.content.label}}</p>
+            {{form.content}}
            </div> 
            <button type="submit" class="btn btn-primary">Modifier</button>
         </form> 
