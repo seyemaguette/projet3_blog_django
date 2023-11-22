@@ -5,22 +5,25 @@
 {% block contenu %}
 <div class="row  "> 
   
+  
+
+  
     <div class="col m-4">
-        
-            <a href="{% url 'new_articles'%}" class="btn btn-outline-info mb-2">Ajouter</a>
+      <a href="{% url 'new_articles'%}" class="btn btn-outline-info mb-2">Ajouter</a>
+      </div>
             <h1 class="h1 text-secondary"> vos articles </h1>
     </div>
   {% if page_obj  %}
   <div class="row m-auto my-2">
   {% for  article in page_obj %}
         
-            <div class="col col-lg-3 col-md-6  my-2">
-                <a href="{% url 'details_articles' article.id %}" style="text-decoration:none ;" >
-                    <div class="card "">
+            <div class="col-lg-4 col-xs-1 col-sm-6 my-2">
+                <a href="{% url 'details_articles' article.id %}" style="text-decoration:none ;font-size: small;" >
+                    <div class="card shadow ">
                       {% if  article.image %}
-                      <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap">
+                      <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap" style="height:150px ;">
                       {% endif %}
-                        <div class="card-body">
+                        <div class="card-body overflow-auto" style="height: 200px;">  
                             <li class=" h5 card-title">{{article.title}}</li>
                             <p class="card-text text-info">{{article.summary}}</p>
                             <p class="card-text">Publier  le {{article.creation_date}} par {{article.author}}</p>

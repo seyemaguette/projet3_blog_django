@@ -17,7 +17,7 @@ class Article (models.Model):
     class Meta:
         ordering = ['-creation_date']
 
-
+ 
     def __str__(self):
         return f"{self.title}"
 
