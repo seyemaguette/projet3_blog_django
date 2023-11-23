@@ -14,15 +14,15 @@
   {% for  article in page_obj %} 
         
             <div class="col-lg-4 col-xs-1 col-sm-6 my-2" >
-                <a href="{% url 'details' article.id %}" style="text-decoration:none ;font-size: small;" >
+                <a href="{% url 'details' article.id %}" style="text-decoration:none ;" >
                     <div class="card shadow "  >
                       {% if  article.image %}
                       <img class="card-img-top" src="{{ article.image.url}}" alt="Card image cap" style="height:150px ;">
                       {% endif %}
                         <div class="card-body  overflow-auto " style="height: 200px;">
-                            <li class="card-text ">{{article.title}}</li>
+                            <li class="card-text text-uppercase">{{article.title}}</li>
                             <p class=" h6 card-title text-info">{{article.summary}}</p>
-                            <p class="card-text" >Publier  le {{article.creation_date}} <br>par {{article.author}}</p>
+                            <p class="card-text " >Publier  le {{article.creation_date}} <br>par {{article.author}}</p>
                         </div>
                     </div> 
                 </a>

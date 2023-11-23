@@ -24,8 +24,7 @@ urlpatterns = [
     path('', include('users.urls')),
    
 ]
-#staticfiles
-if not settings.DEBUG:
-    urlpatterns += [static(settings.MEDIA_URL ,document_root = settings.MEDIA_ROOT)]
+
+
 #media
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
